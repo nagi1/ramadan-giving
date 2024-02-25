@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('location');
             $table->timestamp('starts_at');
-            $table->timestamp('ends_at');
+            $table->timestamp('ends_at')->nullable();
             $table->timestamps();
         });
     }
