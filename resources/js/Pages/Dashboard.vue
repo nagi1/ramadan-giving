@@ -57,6 +57,14 @@ const check = () => {
         preserveScroll: true,
     });
 };
+
+const clearForm = () => {
+    form.name = null;
+    form.identifier = null;
+    form.phone = null;
+
+    form.reset();
+};
 </script>
 
 <template>
@@ -128,7 +136,7 @@ const check = () => {
                         <!-- reset button  on the left side-->
                         <button
                             class="text-sm text-gray-100 underline underline-offset-8"
-                            @click.prevent="form.reset()"
+                            @click="clearForm"
                         >
                             تفريغ الحقول
                         </button>
