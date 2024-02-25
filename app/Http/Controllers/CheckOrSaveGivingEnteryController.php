@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\GivingEntry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -62,6 +63,10 @@ class CheckOrSaveGivingEnteryController extends Controller
 
             if ($e->getCode() === '23000' && Str::contains($e->getMessage(), 'giving_entries_identifier_unique')) {
                 return redirect()->back()->with('error', 'المعرف الرقمي  موجود بالفعل، يرجى التحقق من البيانات والمحاولة مرة أخرى.');
+            }
+
+            if (! App::isProduction()) {
+                throw $e;
             }
 
             return redirect()->back()->with('error', 'حدث خطأ ما، يرجى المحاولة مرة أخرى.');

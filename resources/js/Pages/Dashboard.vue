@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { onUpdated, ref } from "vue";
+import { nextTick, onUpdated, ref } from "vue";
 import { Link, router, useForm, usePage } from "@inertiajs/vue3";
 import FormSection from "@/Components/FormSection.vue";
 import InputError from "@/Components/InputError.vue";
@@ -59,12 +59,16 @@ const check = () => {
 };
 
 const clearForm = () => {
-    form.name = null;
-    form.identifier = null;
-    form.phone = null;
-
-    form.reset();
+    nextTick(() => {
+        form.reset();
+        document.getElementById("identifier").focus();
+        form.clearErrors();
+        form.name = null;
+        form.identifier = null;
+        form.phone = null;
+    });
 };
+
 </script>
 
 <template>
