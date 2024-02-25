@@ -103,7 +103,7 @@ const clearForm = () => {
 
                     <!-- Name -->
                     <div class="col-span-6 sm:col-span-4">
-                        <InputLabel for="name" value="الاسم الرباعي" />
+                        <InputLabel for="name" value="الاسم الرباعي (كما في البطاقة)" />
                         <TextInput
                             id="name"
                             v-model="form.name"
