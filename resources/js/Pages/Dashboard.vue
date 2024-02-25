@@ -136,7 +136,7 @@ const clearForm = () => {
                         <!-- reset button  on the left side-->
                         <button
                             class="text-sm text-gray-100 underline underline-offset-8"
-                            @click="clearForm"
+                            @click.prevent="clearForm"
                         >
                             تفريغ الحقول
                         </button>
